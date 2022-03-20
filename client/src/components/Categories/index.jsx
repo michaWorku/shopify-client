@@ -1,6 +1,16 @@
+import { Container } from "./styled"
+import { categories } from "../../data"
+import CategoryItem from "../CategoryItem"
+
 const Categories = () => {
   return (
-    <div>Categories</div>
+    <Container>
+      {
+        categories.map((item)=>(
+          <CategoryItem item={item} key={item.id}/>)
+          )
+      }
+    </Container>
   )
 }
 
