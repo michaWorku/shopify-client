@@ -1,7 +1,10 @@
+import { Container } from "./styled"
 
 const Announcement = () => {
   return (
-    <div>Announcement</div>
+    <Container>
+      Super Deal! Free Shipping on Orders Over $50
+    </Container>
   )
 }
 
