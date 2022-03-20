@@ -1,6 +1,16 @@
+import { Navbar, Announcement, Slider, Categories, Products, NewsLetter, Footer } from "../../components/"
+
 const Home = () => {
   return (
-    <div>Home page</div>
+    <div>
+      <Announcement/>
+      <Navbar/>
+      <Slider/>
+      <Categories />
+      <Products/>
+      <NewsLetter/>
+      <Footer/>
+    </div>
   )
 }
 
