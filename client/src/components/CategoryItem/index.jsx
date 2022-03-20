@@ -1,6 +1,14 @@
-const CategoryItem = () => {
+import { Button, Container, Image, Info, Title } from "./styled"
+
+const CategoryItem = ({item}) => {
   return (
-    <div>CategoryItem</div>
+    <Container>
+      <Image src={item.img}/>
+      <Info>
+        <Title>{item.title}</Title>
+        <Button>SHOP NOW</Button>
+      </Info>
+    </Container>
   )
 }
 
