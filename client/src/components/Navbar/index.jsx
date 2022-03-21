@@ -12,7 +12,7 @@ const Navbar = () => {
             EN
           </Language>
           <SearchContainer>
-            <Input />
+            <Input placeholder='Search'/>
             <SearchIcon style={{color:"gray",fontSize: '16px'}}/>
           </SearchContainer>
         </Left>
@@ -25,7 +25,7 @@ const Navbar = () => {
             <MenuItem>REGISTER</MenuItem>
             <MenuItem>SIGN IN</MenuItem>
             <MenuItem>
-              <Badge badgeContent={4} color="secondary">
+              <Badge badgeContent={4} color="primary">
                 <ShoppingCartOutlinedIcon/>
               </Badge>
             </MenuItem>

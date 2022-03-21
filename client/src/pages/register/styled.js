@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { mobile } from '../../responsive'
 
 export const Container = styled.div`
     width: 100vw;
@@ -21,6 +22,7 @@ export const Wrapper = styled.div`
     padding: 60px;
     margin-left: 400px;
     background-color: white;
+    ${mobile({width: '75%', marginLeft: "0px"})}
 `
 
 export const Title = styled.h1`
@@ -38,6 +40,7 @@ export const Input = styled.input`
     min-width: 40%;
     margin: 20px 10px 0px 0px;
     padding: 10px;
+    ${mobile({margin: "10px 5px 0px 0px"})}
 `
 
 export const Agreement = styled.span`

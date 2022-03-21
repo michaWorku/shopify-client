@@ -1,5 +1,5 @@
 import { Announcement, Footer, Navbar, NewsLetter } from "../../components"
-import { Container, Desc, ImageContainer, Image, InfoContainer, Price, Title, Wrapper, FilterContainer, Filter, FilterTitle, FilterColor, FilterSizeOption, FilterSize, AddContainer, AmmountContainer, Button, Ammount } from "./styled"
+import { Container, Desc, ImageContainer, Image, InfoContainer, Price, Title, Wrapper, FilterContainer, Filter, FilterTitle, FilterColor, FilterSizeOption, FilterSize, AddContainer, AmountContainer, Button, Amount } from "./styled"
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 
@@ -38,11 +38,11 @@ const Product = () => {
                 </Filter>
               </FilterContainer>
               <AddContainer>
-                <AmmountContainer>
+                <AmountContainer>
                   <RemoveIcon/>
-                  <Ammount>1</Ammount>
+                  <Amount>1</Amount>
                   <AddIcon/>
-                </AmmountContainer>
+                </AmountContainer>
                 <Button>ADD TO CART</Button>
               </AddContainer>
           </InfoContainer>
