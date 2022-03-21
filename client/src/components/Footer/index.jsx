@@ -50,13 +50,13 @@ const Footer = () => {
       <Right>
         <Title>Contact</Title>
         <ContactItem>
-          <RoomIcon style={{marginRight:"10px"}}/> 622 Dixie Path , South Tobinchester 98336
+          <RoomIcon style={{marginRight:"10px"}}/> King George VI Street, Addis Ababa Ethiopia
         </ContactItem>
         <ContactItem>
-          <PhoneIcon style={{marginRight:"10px"}}/> +1 234 56 78
+          <PhoneIcon style={{marginRight:"10px"}}/> +251 945566509
         </ContactItem>
         <ContactItem>
-          <MailOutlineIcon style={{marginRight:"10px"}} /> contact@lama.dev
+          <MailOutlineIcon style={{marginRight:"10px"}} /> contact@shopify.com
         </ContactItem>
         <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
       </Right>
