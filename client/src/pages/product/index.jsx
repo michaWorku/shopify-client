@@ -2,48 +2,84 @@ import { Announcement, Footer, Navbar, NewsLetter } from "../../components"
 import { Container, Desc, ImageContainer, Image, InfoContainer, Price, Title, Wrapper, FilterContainer, Filter, FilterTitle, FilterColor, FilterSizeOption, FilterSize, AddContainer, AmountContainer, Button, Amount } from "./styled"
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
+import { useState } from "react";
+import publicRequest from '../../requestMethod'
+import { useParams } from "react-router-dom";
 
 const Product = () => {
+  const params = useParams()
+  const id = params.id;
+
+  const [product, setProduct] = useState({})
+  const [quantity, setQuantity] = useState(1);
+  const [color, setColor] = useState("");
+  const [size, setSize] = useState("");
+
+  // fetch product
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await publicRequest.get(`/products/${id}`)
+        setProduct(res.data)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+
+    getProduct()
+  }, [id])
+  
+  const handleQuantity=(type)=>{
+    if(type === 'dec') {
+      quantity > 1 && setQuantity((prev)=> prev-1)
+    }else{
+      setQuantity((prev)=> prev+1)
+    }
+  }
+
+  const handleClick=()=> {
+
+  }
+
   return (
     <Container>
       <Navbar/>
       <Announcement/>
         <Wrapper>
           <ImageContainer>
-            <Image src="https://i.ibb.co/DG69bQ4/2.png" />
+            <Image src={product.img} />
           </ImageContainer>
           <InfoContainer>
-            <Title>AUTUMN COLLECTION</Title>
-            <Desc>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-              Dignissimos harum atque sequi molestias debitis eos mollitia 
-              dolorem nesciunt aut quod dolore vel, ullam voluptate. 
-              Totam voluptas distinctio error corrupti sunt?</Desc>
-              <Price>$ 20</Price>
+            <Title>{product.title}</Title>
+            <Desc>{product.desc}</Desc>
+              <Price>$ {product.price}</Price>
               <FilterContainer>
                 <Filter>
                   <FilterTitle>Color</FilterTitle>
-                  <FilterColor color='black'/>
-                  <FilterColor color='darkblue'/>
-                  <FilterColor color='gray'/>
+                  {
+                    product.color?.map((color)=>(
+                      <FilterColor color={color} key={color} onClick={()=> setColor(color)}/>
+                    ))
+                  }
                 </Filter>
                 <Filter>
                   <FilterTitle>Size</FilterTitle>
-                  <FilterSize>
-                    <FilterSizeOption>XS</FilterSizeOption>
-                    <FilterSizeOption>S</FilterSizeOption>
-                    <FilterSizeOption>M</FilterSizeOption>
-                    <FilterSizeOption>L</FilterSizeOption>
-                    <FilterSizeOption>XL</FilterSizeOption>
+                  <FilterSize onChange={(e)=>setSize(e.target.value)}>
+                    {
+                      product.size?.map((size)=>(
+                        <FilterSizeOption key={size}>{size}</FilterSizeOption>
+                      ))
+                    }
                   </FilterSize>
                 </Filter>
               </FilterContainer>
               <AddContainer>
                 <AmountContainer>
-                  <RemoveIcon/>
-                  <Amount>1</Amount>
-                  <AddIcon/>
+                  <RemoveIcon onClick={()=> handleQuantity('dec')}/>
+                  <Amount>{quantity}</Amount>
+                  <AddIcon onClick={()=> handleQuantity('inc')}/>
                 </AmountContainer>
-                <Button>ADD TO CART</Button>
+                <Button onClick={handleClick}>ADD TO CART</Button>
               </AddContainer>
           </InfoContainer>
         </Wrapper>
