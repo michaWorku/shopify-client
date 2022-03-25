@@ -7,3 +7,4 @@ export { default as NewsLetter } from "./NewsLetter";
 export { default as Product } from "./Product";
 export { default as Products } from "./Products";
 export { default as Slider } from "./Slider";
+export { default as Spinner } from "./Spinner";
