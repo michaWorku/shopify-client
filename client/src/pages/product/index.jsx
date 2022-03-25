@@ -3,8 +3,10 @@ import { Container, Desc, ImageContainer, Image, InfoContainer, Price, Title, Wr
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import { useState } from "react";
-import publicRequest from '../../requestMethod'
+import {publicRequest} from '../../requestMethod'
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../features/cart/cartSlice";
 
 const Product = () => {
   const params = useParams()
@@ -14,6 +16,8 @@ const Product = () => {
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
+
+  const dispatch = useDispatch()
 
   // fetch product
   useEffect(() => {
@@ -37,8 +41,8 @@ const Product = () => {
     }
   }
 
-  const handleClick=()=> {
-
+  const updateCart=()=> {
+    dispatch(addProduct({...product, quantity, color, size}))
   }
 
   return (
@@ -79,7 +83,7 @@ const Product = () => {
                   <Amount>{quantity}</Amount>
                   <AddIcon onClick={()=> handleQuantity('inc')}/>
                 </AmountContainer>
-                <Button onClick={handleClick}>ADD TO CART</Button>
+                <Button onClick={updateCart}>ADD TO CART</Button>
               </AddContainer>
           </InfoContainer>
         </Wrapper>

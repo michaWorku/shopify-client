@@ -5,7 +5,7 @@ import { toast } from 'react-toastify'
 import { Spinner } from "../../components"
 import { login, reset } from "../../features/auth/authSlice"
 
-import { Button, Container, Title, Form, Input, Wrapper, Link } from "./styled"
+import { Button, Container, Title, Form, Input, Wrapper, Link, Error } from "./styled"
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -77,7 +77,8 @@ const Login = () => {
             placeholder='Enter password'
             onChange={onChange}
           ></Input>
-          <Button>LOGIN</Button>
+          <Button disabled={isLoading}>LOGIN</Button>
+          {isError && <Error>Something went wrong....</Error>}
           <Link>DON NOT YOU REMEMBER THE PASSWORD?</Link>
           <Link>CREATE A NEW ACCOUNT</Link>
         </Form>

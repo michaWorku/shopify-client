@@ -6,7 +6,7 @@ import { Container } from "./styled"
 
 const Products = ({cat, filters, sort}) => {
 
-  const [products, setProducts] = useState({})
+  const [products, setProducts] = useState([])
   const [filteredProducts, setFilteredProducts] = useState({})
 
   //fetch products using if category query provided or
